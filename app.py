@@ -1,12 +1,16 @@
+import os
 from flask import Flask
 from flask_migrate import Migrate
 from flask_restful import Api
 from flask_cors import CORS
 from models import db
 from resources.event import EventListResource, EventResource
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
