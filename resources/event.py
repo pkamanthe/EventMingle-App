@@ -29,7 +29,7 @@ class EventListResource(Resource):
         )
         db.session.add(new_event)
         db.session.commit()
-        return jsonify(new_event.to_dict()), 201
+        return new_event.to_dict(), 201
 
 class EventResource(Resource):
     def get(self, id):
